@@ -120,8 +120,8 @@ const Footer = () => {
             
             {/* نموذج الاشتراك */}
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* الحقول جنباً إلى جنب على الشاشات الكبيرة، عمودياً على الصغيرة */}
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* الحقول والزر في صف واحد */}
+              <div className="flex flex-col lg:flex-row gap-3">
                 <Input
                   type="text"
                   placeholder="الاسم الكامل"
@@ -142,17 +142,15 @@ const Footer = () => {
                   dir="rtl"
                   style={{ fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}
                 />
+                <Button 
+                  type="submit" 
+                  className="h-12 px-8 bg-white text-primary hover:bg-white/90 font-bold shadow-lg hover:shadow-xl transition-all whitespace-nowrap" 
+                  disabled={subscribeToNewsletter.isPending}
+                  style={{ fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}
+                >
+                  {subscribeToNewsletter.isPending ? "جاري الاشتراك..." : "اشترك"}
+                </Button>
               </div>
-              
-              {/* زر الاشتراك */}
-              <Button 
-                type="submit" 
-                className="w-full sm:w-auto px-8 h-12 bg-white text-primary hover:bg-white/90 font-bold shadow-lg hover:shadow-xl transition-all" 
-                disabled={subscribeToNewsletter.isPending}
-                style={{ fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}
-              >
-                {subscribeToNewsletter.isPending ? "جاري الاشتراك..." : "اشترك"}
-              </Button>
             </form>
           </div>
         </div>

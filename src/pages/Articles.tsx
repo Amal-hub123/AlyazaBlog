@@ -34,12 +34,12 @@ const Articles = () => {
                 <div className="p-6 h-full flex gap-4">
                   <Skeleton className="w-32 h-32 rounded flex-shrink-0" />
                   <div className="flex-1 flex flex-col">
-                    <div className="flex items-center gap-3 mb-3">
+                    <Skeleton className="h-5 w-full mb-2" />
+                    <Skeleton className="h-12 w-full flex-1 mb-3" />
+                    <div className="flex items-center gap-3">
                       <Skeleton className="h-5 w-20" />
                       <Skeleton className="h-4 w-24" />
                     </div>
-                    <Skeleton className="h-5 w-full mb-2" />
-                    <Skeleton className="h-12 w-full flex-1" />
                   </div>
                 </div>
               </div>
@@ -61,25 +61,26 @@ const Articles = () => {
                       
                       {/* المحتوى على اليسار - Flexible with consistent layout */}
                       <div className="flex-1 min-w-0 flex flex-col justify-between">
-                        <div>
-                          <div className="flex items-center gap-3 mb-2 flex-wrap">
-                            <Badge variant="secondary" className="bg-primary/10 text-primary font-medium text-xs">
-                              {article.category}
-                            </Badge>
-                            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                              <Calendar className="w-3 h-3" />
-                              <span>{new Date(article.created_at).toLocaleDateString('en-GB')}</span>
-                            </div>
-                          </div>
-                          
+                        <div className="flex-1">
                           <h3 className="text-base font-bold text-card-foreground mb-2 leading-tight line-clamp-2">
                             {article.title}
                           </h3>
+                          
+                          <p className="text-muted-foreground text-sm line-clamp-3 leading-relaxed mb-3">
+                            {article.excerpt}
+                          </p>
                         </div>
                         
-                        <p className="text-muted-foreground text-sm line-clamp-3 leading-relaxed">
-                          {article.excerpt}
-                        </p>
+                        {/* المعلومات في الأسفل */}
+                        <div className="flex items-center gap-3 flex-wrap mt-auto">
+                          <Badge variant="secondary" className="bg-primary/10 text-primary font-medium text-xs">
+                            {article.category}
+                          </Badge>
+                          <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <Calendar className="w-3 h-3" />
+                            <span>{new Date(article.created_at).toLocaleDateString('en-GB')}</span>
+                          </div>
+                        </div>
                       </div>
                       
                       {/* Arrow indicator */}

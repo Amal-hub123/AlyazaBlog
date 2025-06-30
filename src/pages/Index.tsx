@@ -100,15 +100,15 @@ const Index = () => {
             {isLoading ? (
               Array.from({ length: 6 }).map((_, index) => (
                 <div key={index} className="bg-card rounded-lg overflow-hidden shadow-sm border">
-                  <div className="p-6 h-48 flex gap-4">
+                  <div className="p-6 h-56 flex gap-4">
                     <Skeleton className="w-32 h-32 rounded flex-shrink-0" />
                     <div className="flex-1 flex flex-col">
-                      <div className="flex items-center gap-3 mb-3">
+                      <Skeleton className="h-5 w-full mb-2" />
+                      <Skeleton className="h-12 w-full flex-1 mb-3" />
+                      <div className="flex items-center gap-3">
                         <Skeleton className="h-5 w-20" />
                         <Skeleton className="h-4 w-24" />
                       </div>
-                      <Skeleton className="h-5 w-full mb-2" />
-                      <Skeleton className="h-12 w-full flex-1" />
                     </div>
                   </div>
                 </div>
@@ -116,7 +116,7 @@ const Index = () => {
             ) : allContent.length > 0 ? (
               allContent.map((item) => (
                 <Link key={`${item.type}-${item.id}`} to={item.type === 'article' ? `/article/${item.id}` : `/company/${item.id}`}>
-                  <div className="bg-card rounded-lg overflow-hidden shadow-sm border hover:shadow-lg transition-shadow cursor-pointer group relative h-48">
+                  <div className="bg-card rounded-lg overflow-hidden shadow-sm border hover:shadow-lg transition-shadow cursor-pointer group relative h-56">
                     <div className="p-6 h-full">
                       <div className="flex gap-4 h-full" dir="rtl">
                         {/* الصورة على اليمين - Fixed size with contain behavior */}
@@ -133,35 +133,36 @@ const Index = () => {
                         
                         {/* المحتوى على اليسار - Flexible with consistent layout */}
                         <div className="flex-1 min-w-0 flex flex-col justify-between">
-                          <div>
-                            <div className="flex items-center gap-3 mb-2 flex-wrap">
-                              <Badge variant={item.type === 'article' ? 'default' : 'secondary'} className="font-medium text-xs">
-                                {item.type === 'article' ? 'مقال' : 'رحلة شركة'}
-                              </Badge>
-                              {item.type === 'article' && (
-                                <Badge variant="outline" className="text-xs">
-                                  {item.category}
-                                </Badge>
-                              )}
-                              {item.type === 'company' && (
-                                <Badge variant="outline" className="text-xs">
-                                  {item.sector}
-                                </Badge>
-                              )}
-                              <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                                <Calendar className="w-3 h-3" />
-                                <span>{item.date.toLocaleDateString('en-GB')}</span>
-                              </div>
-                            </div>
-                            
+                          <div className="flex-1">
                             <h3 className="text-base font-bold text-card-foreground mb-2 leading-tight line-clamp-2">
                               {item.type === 'article' ? item.title : item.name}
                             </h3>
+                            
+                            <p className="text-muted-foreground text-sm line-clamp-3 leading-relaxed mb-3">
+                              {item.type === 'article' ? item.excerpt : item.description}
+                            </p>
                           </div>
                           
-                          <p className="text-muted-foreground text-sm line-clamp-2 leading-relaxed">
-                            {item.type === 'article' ? item.excerpt : item.description}
-                          </p>
+                          {/* المعلومات في الأسفل */}
+                          <div className="flex items-center gap-3 flex-wrap mt-auto">
+                            <Badge variant={item.type === 'article' ? 'default' : 'secondary'} className="font-medium text-xs">
+                              {item.type === 'article' ? 'مقال' : 'رحلة شركة'}
+                            </Badge>
+                            {item.type === 'article' && (
+                              <Badge variant="outline" className="text-xs">
+                                {item.category}
+                              </Badge>
+                            )}
+                            {item.type === 'company' && (
+                              <Badge variant="outline" className="text-xs">
+                                {item.sector}
+                              </Badge>
+                            )}
+                            <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                              <Calendar className="w-3 h-3" />
+                              <span>{item.date.toLocaleDateString('en-GB')}</span>
+                            </div>
+                          </div>
                         </div>
                         
                         {/* Arrow indicator */}

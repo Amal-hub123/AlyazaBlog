@@ -66,6 +66,8 @@ const SiteSettingsTab = () => {
               value={siteForm.site_name}
               onChange={(e) => setSiteForm(prev => ({ ...prev, site_name: e.target.value }))}
               placeholder="اسم موقعك"
+              dir="rtl"
+              style={{ direction: 'rtl', textAlign: 'right' }}
             />
           </div>
           <div className="space-y-2">
@@ -76,6 +78,8 @@ const SiteSettingsTab = () => {
               onChange={(e) => setSiteForm(prev => ({ ...prev, site_description: e.target.value }))}
               placeholder="وصف مختصر لموقعك"
               rows={3}
+              dir="rtl"
+              style={{ direction: 'rtl', textAlign: 'right' }}
             />
           </div>
           <div className="space-y-2">
@@ -86,6 +90,7 @@ const SiteSettingsTab = () => {
               value={siteForm.contact_email}
               onChange={(e) => setSiteForm(prev => ({ ...prev, contact_email: e.target.value }))}
               placeholder="your@email.com"
+              dir="ltr"
             />
           </div>
           <div className="grid grid-cols-1 gap-4">
@@ -96,6 +101,7 @@ const SiteSettingsTab = () => {
                 value={siteForm.linkedin_url}
                 onChange={(e) => setSiteForm(prev => ({ ...prev, linkedin_url: e.target.value }))}
                 placeholder="https://linkedin.com/in/yourprofile"
+                dir="ltr"
               />
             </div>
             <div className="space-y-2">
@@ -105,6 +111,7 @@ const SiteSettingsTab = () => {
                 value={siteForm.twitter_url}
                 onChange={(e) => setSiteForm(prev => ({ ...prev, twitter_url: e.target.value }))}
                 placeholder="https://twitter.com/yourhandle"
+                dir="ltr"
               />
             </div>
             <div className="space-y-2">
